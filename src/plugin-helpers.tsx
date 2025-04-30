@@ -43,3 +43,19 @@ export function registerToolbarButton() {
       New Button</Button>,
   });
 }
+
+export function registerMainTab() {
+  Builder.register('editor.mainTab', {
+    name: 'Custom New Tab',
+    component: () => <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignContent: 'center',
+      backgroundColor: 'white',
+      height: 'inherit',
+      color: 'black',
+      }}>
+      <h1>Hello new tab!</h1>
+    </div>,
+  });
+}
