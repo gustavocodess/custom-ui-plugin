@@ -5,6 +5,7 @@ import {
 } from '@material-ui/icons';
 import Tooltip from '@material-ui/core/Tooltip';
 import ContentTab from './components/ContentTab';
+import { Button } from '@mui/material';
 
 
 export function registerEditorOnLoad(reactionCallback: (actions: ContentEditorActions) => void) {
@@ -34,5 +35,11 @@ export function registerContentTab() {
       component: () => ContentTab(),
     })
   }
-  
+}
+
+export function registerToolbarButton() {
+  Builder.register('editor.toolbarButton', {
+    component: () => <Button variant="contained" onClick={() => alert("New item clicked!")}>
+      New Button</Button>,
+  });
 }

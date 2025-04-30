@@ -1,6 +1,6 @@
 import { registerCommercePlugin } from '@builder.io/commerce-plugin-tools';
 import pkg from "../package.json";
-import { registerContentTab, registerEditorOnLoad } from "./plugin-helpers";
+import { registerContentTab, registerEditorOnLoad, registerToolbarButton } from "./plugin-helpers";
 
 
 registerCommercePlugin({
@@ -37,8 +37,11 @@ registerCommercePlugin({
     registerEditorOnLoad(async ({ safeReaction }) => {
       safeReaction(
         async () => {
-          // Registering tabs after content is loaded in editor
-          registerContentTab()          
+          // register tab after content is loaded in editor
+          registerContentTab()
+          // Register new toolbar button
+          registerToolbarButton()
+
           return null;
         },
         async () => {
