@@ -62,7 +62,7 @@ export function registerMainTab() {
 
 export function registerLayersContextMenu() {
   Builder.register('contextMenu.action', {
-    label: 'Log Selected Layers',
+    label: 'Show Selected Layers',
     showIf(selectedElements: any[]) {
       if (selectedElements?.length < 1) {
         // no elements selected
@@ -71,7 +71,7 @@ export function registerLayersContextMenu() {
       return true;
     },
     onClick(selectedElements: any[]) {
-      console.log('Selected elements... ', selectedElements)
+      alert('Selected elements... \n' + JSON.stringify(selectedElements))
     },
   });
 }
