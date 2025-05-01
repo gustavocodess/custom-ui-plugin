@@ -25,6 +25,7 @@ interface ContentEditorActions {
 
 
 export function registerContentTab() {
+  // avoid registering same tab multiple times
   if (!Builder.registry["editor.editTab"]) {
     Builder.register('editor.editTab', {
       name: (
@@ -38,40 +39,49 @@ export function registerContentTab() {
 }
 
 export function registerToolbarButton() {
-  Builder.register('editor.toolbarButton', {
-    component: () => <Button variant="contained" onClick={() => alert("New item clicked!")}>
-      New Button</Button>,
-  });
+  // avoid registering same menu button multiple times
+  if (!Builder.registry["editor.toolbarButton"]) {
+    Builder.register('editor.toolbarButton', {
+      component: () => <Button variant="contained" onClick={() => alert("New item clicked!")}>
+        New Button</Button>,
+    });
+  }
 }
 
 export function registerMainTab() {
-  Builder.register('editor.mainTab', {
-    name: 'Custom New Tab',
-    component: () => <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignContent: 'center',
-      backgroundColor: 'white',
-      height: 'inherit',
-      color: 'black',
-      }}>
-      <h1>Hello new tab!</h1>
-    </div>,
-  });
+  // avoid registering same main tab multiple times
+  if (!Builder.registry["editor.mainTab"]) {
+    Builder.register('editor.mainTab', {
+      name: 'Custom New Tab',
+      component: () => <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
+        backgroundColor: 'white',
+        height: 'inherit',
+        color: 'black',
+        }}>
+        <h1>Hello new tab!</h1>
+      </div>,
+    });
+  }
 }
 
 export function registerLayersContextMenu() {
-  Builder.register('contextMenu.action', {
-    label: 'Show Selected Layers',
-    showIf(selectedElements: any[]) {
-      if (selectedElements?.length < 1) {
-        // no elements selected
-        return false;
-      }
-      return true;
-    },
-    onClick(selectedElements: any[]) {
-      alert('Selected elements... \n' + JSON.stringify(selectedElements))
-    },
-  });
+  // avoid registering same menu action multiple times
+  if (!Builder.registry["contextMenu.action"]) {
+    Builder.register('contextMenu.action', {
+      label: 'Show Selected Layers',
+      showIf(selectedElements: any[]) {
+        if (selectedElements?.length < 1) {
+          // no elements selected
+          return false;
+        }
+        return true;
+      },
+      onClick(selectedElements: any[]) {
+        alert('Selected elements... \n' + JSON.stringify(selectedElements))
+      },
+    });
+  }
 }
