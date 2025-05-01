@@ -1,6 +1,6 @@
 import { registerCommercePlugin } from '@builder.io/commerce-plugin-tools';
 import pkg from "../package.json";
-import { registerContentTab, registerEditorOnLoad, registerMainTab, registerToolbarButton } from "./plugin-helpers";
+import { registerContentTab, registerEditorOnLoad, registerLayersContextMenu, registerMainTab, registerToolbarButton } from "./plugin-helpers";
 
 
 registerCommercePlugin({
@@ -43,6 +43,8 @@ registerCommercePlugin({
           registerToolbarButton()
           // register new main tab
           registerMainTab()
+          // register a context menu for selected layers
+          registerLayersContextMenu()
 
           return null;
         },

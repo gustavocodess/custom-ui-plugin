@@ -59,3 +59,19 @@ export function registerMainTab() {
     </div>,
   });
 }
+
+export function registerLayersContextMenu() {
+  Builder.register('contextMenu.action', {
+    label: 'Log Selected Layers',
+    showIf(selectedElements: any[]) {
+      if (selectedElements?.length < 1) {
+        // no elements selected
+        return false;
+      }
+      return true;
+    },
+    onClick(selectedElements: any[]) {
+      console.log('Selected elements... ', selectedElements)
+    },
+  });
+}
